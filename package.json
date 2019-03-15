@@ -1,0 +1,42 @@
+{
+  "name": "docsvision",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack",
+    "dev-server": "webpack-dev-server"
+  },
+  "dependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "6.25.0",
+    "babel-loader": "7.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^1.0.1",
+    "live-server": "^1.2.1",
+    "moment": "^2.22.2",
+    "node-sass": "^4.11.0",
+    "normalize-css": "^2.3.1",
+    "normalize.css": "^8.0.1",
+    "react": "^16.8.4",
+    "react-addons-shallow-compare": "^15.6.2",
+    "react-dates": "^18.2.2",
+    "react-dom": "^16.8.4",
+    "react-form": "^3.5.7",
+    "react-switch": "^3.0.4",
+    "react-toggle": "^4.0.2",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.29.6",
+    "webpack-dev-server": "^3.2.1"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.2.3"
+  }
+}
