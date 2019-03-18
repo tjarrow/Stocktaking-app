@@ -21,7 +21,6 @@ class Equipment extends React.Component {
   findItem = (room_id) => {
     return this.state.equipments
     .filter((e) => e.room === room_id)
-    .reduce((prev, current) => prev.concat(current), [])
     .map((equipment, index) => (
       <div className="equipment-item">
         <span room={`${equipment.room}`} key={index}>{equipment.name} - x{equipment.count}</span>
