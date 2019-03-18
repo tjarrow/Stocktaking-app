@@ -61,17 +61,17 @@ class Equipment extends React.Component {
 
   render() {
     const room_id = `${this.props.id}`;
-    return(
-        <div>
-          <span className="equipment-item__header">Список оборудования:</span>
-          {this.findItem(room_id)}
-          <AddItem
-            editById={this.state.editById}
-            showEditBtn={this.state.showEditBtn}
-            showAddBtn={this.state.showAddBtn}
-            showIdInput={this.state.showIdInput}
-            showRoomInput={this.state.showRoomInput}
-          />
+    return (
+      <div>
+        <span className="equipment-item__header">Список оборудования:</span>
+        {this.findItem(room_id)}
+        <AddItem
+          editById={this.state.editById}
+          showEditBtn={this.state.showEditBtn}
+          showAddBtn={this.state.showAddBtn}
+          showIdInput={this.state.showIdInput}
+          showRoomInput={this.state.showRoomInput}
+        />
       </div>
     );
   }
