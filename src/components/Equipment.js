@@ -60,7 +60,7 @@ class Equipment extends React.Component {
   }
 
   render() {
-    const room_id = `${this.props.id}`;
+    const room_id = this.props.id;
     return (
       <div>
         <span className="equipment-item__header">Список оборудования:</span>
