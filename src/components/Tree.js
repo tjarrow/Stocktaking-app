@@ -1,6 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Equipment from './Equipment';
 
 class Tree extends React.Component {
   constructor(props) {
