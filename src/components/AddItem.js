@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import '../server/data.js';
 
 class AddItem extends React.Component {

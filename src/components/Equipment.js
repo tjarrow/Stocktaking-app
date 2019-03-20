@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import AddItem from './AddItem';
 import '../server/data.js';
 
