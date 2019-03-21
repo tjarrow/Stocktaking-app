@@ -2,18 +2,12 @@ import React from 'react';
 import '../server/data.js';
 
 class AddItem extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      itemName: '',
-      itemRoom: '',
-      itemId: '',
-      itemCount: 1
-    }
-    this.handleChangeItem = this.handleChangeItem.bind(this);
-    this.handleAddItem = this.handleAddItem.bind(this);
-    this.handleEditItem = this.handleEditItem.bind(this);
- }
+  state = {
+    itemName: '',
+    itemRoom: '',
+    itemId: '',
+    itemCount: 1
+  }
 
   handleChangeItem = (e) => {
     const target = e.target;
