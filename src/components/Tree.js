@@ -1,12 +1,9 @@
 import React from 'react';
 
 class Tree extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      buildings: []
-    }
-  }
+  state = {
+    buildings: []
+  }    
 
 componentWillMount() {
  var buildings = new Scorocode.Query("buildings");
