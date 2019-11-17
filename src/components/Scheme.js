@@ -1,5 +1,6 @@
 import React from 'react';
 import Tree from './Tree';
+import TreeNodes from './TreeNodes';
 import Equipment from './Equipment';
 
 class Scheme extends React.Component {
