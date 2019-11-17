@@ -1,29 +1,26 @@
 $(document).ready(function () {
 
-$('#multi-tree li:has("ul")').find('a:first').prepend('<em class="marker"></em>');
+  $('#multi-tree li:has("ul")').find('a:first').prepend('<em class="marker"></em>');
+  $('[id*="b2room"]').children().hide();
+  $('[id*="b1floor1room"]').children().hide();
+  $('#b1floor2roomx').children().hide();
+  
+  $('#multi-tree li span').click(function () {
 
-$('[id*="b2room"]').children().hide();
+      $('a.current').removeClass('current');
+      var a = $('a:first',this.parentNode);
+      a.toggleClass('current');
+      var li=$(this.parentNode);
 
-$('[id*="b1floor1room"]').children().hide();
+      if (!li.next().length) {
+        li.find('ul:first > li').addClass('last');
+      }
 
-$('#b1floor2roomx').children().hide();
-
-$('#multi-tree li span').click(function () {
-
-  $('a.current').removeClass('current');
-  var a = $('a:first',this.parentNode);
-  a.toggleClass('current');
-  var li=$(this.parentNode);
-
-  if (!li.next().length) {
-    li.find('ul:first > li').addClass('last');
-  }
-
-  var ul=$('ul:first',this.parentNode);
-  if (ul.length) {
-     ul.slideToggle(300);
-     var em=$('em:first',this.parentNode);
-     em.toggleClass('open');
-   }
- });
+      var ul=$('ul:first',this.parentNode);
+      if (ul.length) {
+        ul.slideToggle(300);
+        var em=$('em:first',this.parentNode);
+        em.toggleClass('open');
+      }
+   });
 })
