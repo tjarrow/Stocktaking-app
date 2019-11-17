@@ -6,7 +6,9 @@
   "scripts": {
     "build": "webpack",
     "start": "node server.js",
-    "dev-server": "webpack-dev-server"
+    "dev-server": "webpack-dev-server",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "@babel/core": "^7.3.4",
@@ -21,6 +23,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^1.0.1",
     "express": "^4.17.1",
+    "gh-pages": "^2.1.1",
     "live-server": "^1.2.1",
     "moment": "^2.22.2",
     "node-sass": "^4.11.0",
