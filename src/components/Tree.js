@@ -34,7 +34,7 @@ class Tree extends React.Component {
       <div id="multi-tree">
         <h4>
           <a className="scheme-header" href="#">
-            Схема офисов организации
+            Схема  организации
           </a>
         </h4>
         <ul>
