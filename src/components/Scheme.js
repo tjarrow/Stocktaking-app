@@ -1,6 +1,7 @@
 import React from 'react';
 import Tree from './Tree';
 import Equipment from './Equipment';
+import Versions from './Versions';
 
 class Scheme extends React.Component {
   constructor() {
@@ -22,6 +23,7 @@ class Scheme extends React.Component {
   render() {
    return (
     <div className="container">
+    <Versions/>
       <div className="panel-left">
         <Tree
           onToggleEqItem={this.handleShowEqItem}
