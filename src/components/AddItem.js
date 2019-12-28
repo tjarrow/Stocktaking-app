@@ -1,5 +1,6 @@
 import React from 'react';
 import '../server/data.js';
+import nextId from "react-id-generator";
 
 class AddItem extends React.Component {
   constructor(props) {
@@ -8,7 +9,10 @@ class AddItem extends React.Component {
       itemName: '',
       itemRoom: '',
       itemId: '',
-      itemCount: 1
+      itemCount: 1,
+      equipments: this.props.equipments,
+      editById: this.props.editById,
+      itemRoom: this.props.roomName
     }
     this.handleChangeItem = this.handleChangeItem.bind(this);
     this.handleAddItem = this.handleAddItem.bind(this);
@@ -26,28 +30,43 @@ class AddItem extends React.Component {
 
   handleAddItem = (e) => {
     e.preventDefault();
-    let comp = new Scorocode.Object("equipment");
-    if ((this.state.itemName != '') && (this.state.itemRoom != '') && (this.state.itemCount != ''))
-    {
-      comp.set("name", this.state.itemName);
-      comp.set("room", this.state.itemRoom);
-      comp.set("count", Number.parseInt(this.state.itemCount));
-      comp.save().then(() => {
-        console.info("Item added");
-      });
-    }
+    // let comp = new Scorocode.Object("equipment");
+      let comp = {
+        "name": this.state.itemName,
+        "room": this.props.roomName,
+        "count": Number.parseInt(this.state.itemCount),
+        "_id": nextId()
+      };
+      this.state.equipments.push(comp);
+      console.info(this.state.equipments);
+      console.info("Item added");
+      // comp.save().then(() => {
+      //   console.info("Item added");
+      // });
   }
 
   handleEditItem = (e) => {
     e.preventDefault();
-    let equip = new Scorocode.Object("equipment");
-    if ((this.state.itemName != '') && (this.state.itemId != '') && (this.state.itemCount != ''))
-    {
-      equip.set("_id", this.state.itemId)
-      .set("name", this.state.itemName)
-      .set("count", Number.parseInt(this.state.itemCount));
-      equip.save().then(() => console.info("Item edited"));
-    }
+    var index = e.target.className;
+    console.log(index);
+
+      for (var i = 0; i < this.state.equipments.length; i++) {
+           if(this.state.equipments[i]._id === index) {
+             this.state.equipments[i]._id = this.state.itemId;
+             this.state.equipments[i].name = this.state.itemName;
+             this.state.equipments[i].count =  Number.parseInt(this.state.itemCount);
+             console.info("Item edited");
+            }
+        }
+      // equip.set("_id", this.state.itemId)
+      // .set("name", this.state.itemName)
+      // .set("count", Number.parseInt(this.state.itemCount));
+      // equip.save().then(() => console.info("Item edited"));
+
+  }
+
+  componentDidUpdate() {
+    this.render();
   }
 
   render() {
@@ -60,7 +79,7 @@ class AddItem extends React.Component {
             <input
               className='add-item-id__input'
               type='text' name='itemId'
-              value={this.props.editById}
+              placeholder='ID'
               onChange={e => this.handleChangeItem(e)} />
           </label>
           }
@@ -73,18 +92,7 @@ class AddItem extends React.Component {
               placeholder='Стол'
               onChange={e => this.handleChangeItem(e)} />
           </label>
-          {this.props.showRoomInput  &&
-          <label>
-            В какой комнате:
-            <input
-              className='add-item-room__input'
-              type='text'
-              name='itemRoom'
-              value={this.state.itemRoom}
-              placeholder='Например, b1floor1room1'
-              onChange={e => this.handleChangeItem(e)} />
-          </label>
-          }
+
           <label>
             Количество:
             <input
@@ -99,7 +107,7 @@ class AddItem extends React.Component {
           <button onClick={e => this.handleAddItem(e)}  className="button">Добавить оборудование</button>
           }
           {this.props.showEditBtn &&
-          <button onClick={e => this.handleEditItem(e)}  className="button">Редактировать оборудование</button>
+          <button onClick={e => this.handleEditItem(e)}  className={this.props.editById}>Редактировать оборудование</button>
           }
         </form>
       </div>

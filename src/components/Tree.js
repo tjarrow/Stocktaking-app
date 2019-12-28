@@ -1,4 +1,5 @@
 import React from "react";
+import buildings from "../../buildings0.json";
 
 class Tree extends React.Component {
   constructor(props) {
@@ -10,11 +11,12 @@ class Tree extends React.Component {
   }
 
   componentWillMount() {
-    var buildings = new Scorocode.Query("buildings");
-    buildings.find().then(finded => {
-      let buildings = finded.result;
+    // var buildings = new Scorocode.Query("buildings");
+    //buildings.find().then(finded => {
+      //let buildings = finded.result;
       this.setState({ buildings: buildings });
-    });
+      console.info(buildings);
+    //});
   }
 
   toggleTree(id) {
@@ -72,7 +74,6 @@ class Tree extends React.Component {
                               ></em>
                               <a
                                 id={`${room.id}`}
-                                onClick={this.props.onToggleEqItem}
                               >
                                 {room.name}
                               </a>
@@ -92,12 +93,18 @@ class Tree extends React.Component {
                                       <span>
                                         <a
                                           id={`${item.id}`}
-                                          onClick={this.props.onToggleEqItem}
+                                          className={`${item.name}`}
+                                          onClick={this.toggleTree.bind(this, item.id)}
                                         >
                                           {item.name}
                                         </a>
                                       </span>
-                                      <ul>
+                                      <ul
+                                        className={
+                                          this.state.openNodes[item.id]
+                                            ? ""
+                                            : "hide" /*display:none;*/
+                                        }>
                                         {item &&
                                           item.children !== undefined &&
                                           item.children.map(i => {
@@ -106,6 +113,7 @@ class Tree extends React.Component {
                                                 <span>
                                                   <a
                                                     id={`${i.id}`}
+                                                    className={`${i.name}`}
                                                     onClick={
                                                       this.props.onToggleEqItem
                                                     }
